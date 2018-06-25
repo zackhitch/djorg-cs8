@@ -1,14 +1,12 @@
 from django.db import models
 from uuid import uuid4
-
 # Create your models here.
 
 
-class Note(models.Model):
+class Bookmark(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
-    # TODO: add user/author who created it
-    title = models.CharField(max_length=200)
-    content = models.TextField(blank=True)
+    title = models.TextField(max_length=200)
+    url = models.URLField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
-    # TODO: tagging system or categories
+    category = models.TextField(max_length=50)
