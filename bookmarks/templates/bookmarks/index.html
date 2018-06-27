@@ -20,6 +20,34 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
   <h1>This is a Django test!</h1>
+  {% if bookmarks %} Bookmarks:
+  <ol>
+    {% for bookmark in bookmarks %}
+    <li>
+      <p>Title: </p>
+      <a href="{{ bookmark.url }}">{{ bookmark.title }}</a>
+      <p>Created at:</p>
+      {{ bookmark.created_at }}
+      <p>Last Modified: </p>
+      {{ bookmark.last_modified }}
+    </li>
+    {% endfor %}
+  </ol>
+  {% endif %}
+  <hr> {% if personal_bookmarks %} Personal Bookmarks:
+  <ol>
+    {% for personal_bookmark in personal_bookmarks %}
+    <li>
+      <p>Title: </p>
+      <a href="{{personal_bookmark.url}}">{{ personal_bookmark.title }}</a>
+      <p>Created at: </p>
+      {{ personal_bookmark.created_at }}
+      <p>Last Modified: </p>
+      {{ personal_bookmark.last_modified }}
+    </li>
+    {% endfor %}
+  </ol>
+  {% endif %}
   <script src="" async defer></script>
 </body>
 

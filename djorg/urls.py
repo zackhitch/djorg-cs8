@@ -15,8 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
+from notes.api import NoteViewset, PersonalNoteViewset
+from bookmarks.api import BookmarkViewset, PersonalBookmarkViewset
+
+router = routers.DefaultRouter()
+router.register(r'notes', NoteViewset)
+router.register(r'personal_notes', PersonalNoteViewset)
+router.register(r'bookmark', BookmarkViewset)
+router.register(r'personal_bookmark', PersonalBookmarkViewset)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('bookmarks/', include('bookmarks.urls')),
+    path(r'api/', include(router.urls)),
 ]
